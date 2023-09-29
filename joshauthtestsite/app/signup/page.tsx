@@ -1,5 +1,14 @@
+'use client'
 import { FormEvent } from "react"
+import { useState } from "react";
 export default function SignUp() {
+
+    const [formData, setFormData] =
+    useState({
+        name: '',
+        email: '',
+        password: '',
+    });
   return (
   <div className="bg-grey-lighter min-h-screen flex flex-col">
             <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
