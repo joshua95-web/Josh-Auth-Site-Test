@@ -11,6 +11,7 @@ export default function SignUp() {
     }
 
   return (
+    <form onSubmit={handleSubmit}>
   <div className="bg-grey-lighter min-h-screen flex flex-col">
             <div className="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
                 <div className="bg-white px-6 py-8 rounded shadow-md text-black w-full">
@@ -55,5 +56,6 @@ export default function SignUp() {
                 </div>
             </div>
         </div>
+        </form>
   )
 }
