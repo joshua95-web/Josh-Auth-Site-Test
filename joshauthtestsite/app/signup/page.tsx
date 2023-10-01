@@ -4,7 +4,10 @@ import { useState } from "react";
 export default function SignUp() {
 
     function handleSubmit(e) {
-        e.preventDefault()
+        e.preventDefault();
+        let formData = new FormData(e.target);
+        const form_values = Object.fromEntries(formData);
+        console.log('form values', form_values)
     }
 
   return (
