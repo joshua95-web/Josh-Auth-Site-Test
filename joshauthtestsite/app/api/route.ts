@@ -1,16 +1,24 @@
 import { NextResponse } from "next/server";
-import { NextRequest } from "next/server";
-import { Client, fql } from 'fauna';
+import { fauna } from "@/lib/clients/fauna";
+import { fql } from "fauna";
 
-export default async function handler(
-    req: NextRequest
-    res: NextResponse 
-) {
-    if (req.method !== 'POST') {
-        return res.status(405).end():
+export async function POST(req: Request) {
+    const { username, password }: any = req.body;
+
+    const member = {
+        username: username,
     }
-    const data = req.body
-    const id = await createItem(data)
-    res.status(200).json({ id })
-}
 
+const createMember = fql`
+    let newMember = Members.create(${member}})
+    Credentials.create({
+        document: Members.byId(newMember!.id),
+        password: ${password},
+    })
+
+    `;
+
+    const memberRes: any = await fauna.query(createMember);
+
+    return NextResponse.json(memberRes, { status: 200 })
+}

@@ -15,11 +15,20 @@ function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
       setPassword(value)
     }
   }
+  
 
-  function handleSubmit(event: React.FormEvent<HTMLFormElement>)
-    event?.preventDefault()
-
-}
+  async function handleSubmit(event: React.FormEvent<HTMLFormElement>) {
+    event.preventDefault()
+    const body = { username, password }
+    const res = await fetch('api/signup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(body)
+    })
+    const json = await res.json()
+    alert('Success!')
+    console.log(json)
+  }
 
 
     return (
