@@ -51,6 +51,10 @@ function handleChange(event: React.ChangeEvent<HTMLInputElement>) {
                 <button type="submit">Submit</button>
         <input type="password" placeholder="Confirm Password" />
         </form>
+        <pre>
+            <p>Email: {username}</p>
+            <p>Password: {password}</p>
+        </pre>
         </div>
     )
 }
