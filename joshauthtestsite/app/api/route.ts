@@ -3,6 +3,7 @@ import { fauna } from "@/lib/clients/fauna";
 import { fql } from "fauna";
 
 export async function POST(req: Request) {
+    const body = await req.json()
     const { username, password }: any = req.body;
 
     const member = {
